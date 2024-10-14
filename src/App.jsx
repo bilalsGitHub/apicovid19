@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>COVID-19 Country Stat</h1>
+      <h1>COVID-19 Country Stats</h1>
 
       {/* FormInput componentinden gelen ülke bilgisi */}
       <FormInput countryfrominputfield={setCountryFromInput} />
