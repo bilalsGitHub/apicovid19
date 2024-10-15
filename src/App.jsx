@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import FormInput from "./Components/FormInput/FormInput";
 import CountryStats from "./Components/CountryStats/CountryStats.jsx";
-
+import "./App.css";
 const App = () => {
   const [data, setData] = useState([]); // API'den gelen tüm veri
   const [filteredData, setFilteredData] = useState(null); // Filtrelenmiş ülke verisi
@@ -12,7 +12,7 @@ const App = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("https://covid-api.com/api/reports"); // API çağrısı
-      setData(response.data.data); // Gelen veriyi state'e kaydediyoruz
+      setData(response.data.data);
     } catch (error) {
       console.error("Veri çekilirken bir hata oluştu:", error);
     }
@@ -27,9 +27,8 @@ const App = () => {
       );
       setFilteredData(filtered);
     }
-  }, [countryFromInput, data]); // countryFromInput veya data değişirse filtreleme yapılır
+  }, [countryFromInput, data]);
 
-  // Component yüklendiğinde API çağrısını yap
   useEffect(() => {
     fetchData();
   }, []);
@@ -38,10 +37,8 @@ const App = () => {
     <div>
       <h1>COVID-19 Country Stats</h1>
 
-      {/* FormInput componentinden gelen ülke bilgisi */}
       <FormInput countryfrominputfield={setCountryFromInput} />
 
-      {/* Eğer filtrelenmiş veri varsa CountryStats componentine gönder */}
       {filteredData ? (
         <CountryStats stats={filteredData} />
       ) : (

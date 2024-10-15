@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./CountryStats.css";
 const CountryStats = ({ stats }) => {
   const { date, confirmed, deaths, recovered, active, region } = stats;
 
